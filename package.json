@@ -1,0 +1,16 @@
+{
+  "family": "tianxiangbing",
+  "name": "mobile-select-date",
+  "description": "mobile选择日期",
+  "version": "1.0.0",
+  "git": "https://github.com/tianxiangbing/mobile-select-date",
+  "author": {
+    "name": "田想兵",
+    "email": "55342775@qq.com",
+    "url": "http://www.lovewebgames.com/jsmodule/mobile-select-date.html"
+  },
+  "devDependencies": {
+    "grunt-contrib-requirejs": "^0.4.4",
+    "grunt-contrib-watch": "^0.6.1"
+  }
+}
