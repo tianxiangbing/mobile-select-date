@@ -36,7 +36,7 @@ module.exports = function(grunt) {
 			options:{
 				"appDir": "src",
 				"baseUrl": ".",
-				"dir": "dist",
+				"dir": "dest",
 				"modules": [{
 					"name": "mobileSelectDate"   //这里会生成id 
 				}],
@@ -47,11 +47,45 @@ module.exports = function(grunt) {
 				}
 			}
 		}
-	}
+	};
+	config.uglify = {
+		options: {
+			banner: '/*! <%= pkg.name %>  v<%= pkg.version %>\n* author:<%=pkg.family%> email:<%=pkg.author.email%>\n* demo:<%=pkg.author.url%> \n* git:<%=pkg.git%>  <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+		},
+		build: {
+			// src: ['src/<%= pkg.name %>.js', '!*.min.js'],
+			// dest: 'dist/<%= pkg.name %>.min.js'
+			files:[{
+				expand:true,
+				cwd:"src",
+				src:['*.js', '!*.min.js'],
+				dest:"dist",
+				ext:'.min.js'
+			}]
+		}
+	};
+	config.cssmin = {
+		options: {
+			compatibility: 'ie8', //设置兼容模式 
+			noAdvanced: true //取消高级特性 
+		},
+		target: {
+			files: [{
+				expand: true,
+				cwd: 'src',
+				src: ['*.css', '!*.min.css'],
+				dest: 'dist',
+				ext: '.min.css'
+			}]
+		}
+	};
 	grunt.initConfig(config);
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-requirejs');
 	// 默认被执行的任务列表。
-	grunt.registerTask('default', ['requirejs']);
+	grunt.registerTask('default', ['uglify','cssmin','requirejs']);
+
 	//requirejs
 };

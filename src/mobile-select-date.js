@@ -27,7 +27,7 @@
 			this.settings = settings;
 			this.separator = "/";
 			var now = new Date();
-			this.settings.value = $(this.settings.trigger).val() || now.getFullYear() + "/" + (now.getMonth() + 1) + '/' + 0;
+			this.settings.value = $(this.settings.trigger).val() || now.getFullYear() + "/" + ("0"+(now.getMonth() + 1)).slice(-2) + '/' +  ("0"+(now.getDate())).slice(-2);
 			this.settings.value = this.settings.value.replace(/\//g, ',');
 			this.settings.text = this.settings.value.split(',')
 			this.base.init.bind(this)(this.settings);
