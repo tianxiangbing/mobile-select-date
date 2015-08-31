@@ -10,7 +10,7 @@
 (function(root, factory) {
 	//amd
 	if (typeof define === 'function' && define.amd) {
-		define(['$', 'mobileSelectArea'], factory);
+		define(['$', 'mobile-select-area'], factory);
 	} else if (typeof exports === 'object') { //umd
 		module.exports = factory();
 	} else {
@@ -27,7 +27,7 @@
 			this.settings = settings;
 			this.separator = "/";
 			var now = new Date();
-			this.settings.value = $(this.settings.trigger).val() || now.getFullYear() + "/" + ("0"+(now.getMonth() + 1)).slice(-2) + '/' +  ("0"+(now.getDate())).slice(-2);
+			this.settings.value = this.settings.value||$(this.settings.trigger).val() || now.getFullYear() + "/" + ("0"+(now.getMonth() + 1)).slice(-2) + '/' +  ("0"+(now.getDate())).slice(-2);
 			this.settings.value = this.settings.value.replace(/\//g, ',');
 			this.settings.text = this.settings.value.split(',')
 			this.base.init.bind(this)(this.settings);

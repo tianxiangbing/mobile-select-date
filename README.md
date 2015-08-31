@@ -18,8 +18,8 @@
 		<body>
 			<input type="text" id="txt_date" value="2013/01/22"/>
 			<script>
-			var selectArea = new MobileSelectArea();
-			selectArea.init({trigger:$('#txt_area'),value:$('#hd_area').val(),data:'data.json'});
+			var selectDate = new MobileSelectDate();
+			selectDate.init({trigger:'#txt_date'});
 			</script>
 		</body>
 	</html>
