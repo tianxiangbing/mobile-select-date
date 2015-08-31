@@ -1,9 +1,7 @@
 # mobile-select-date
 手机联动选择日期
 例子见[DEMO](http://www.lovewebgames.com/jsmodule/mobile-select-date.html)  
-*这个组件是从[mobile-select-area](https://github.com/tianxiangbing/mobile-select-area) 继承过来的，所以调用方法基本相同*
 #用法
-##注：依赖于[dialog](https://github.com/tianxiangbing/dialog)和[mobile-select-area](https://github.com/tianxiangbing/mobile-select-area)
 	<!DOCTYPE>
 	<html>
 		<head>
