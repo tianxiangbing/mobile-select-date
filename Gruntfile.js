@@ -42,7 +42,6 @@ module.exports = function(grunt) {
 				}],
 				"paths": {
 					"$": "zepto",
-					"mobileSelectArea":'mobile-select-area',
 					"mobileSelectDate":'mobile-select-date'
 				}
 			}

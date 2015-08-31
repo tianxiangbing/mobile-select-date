@@ -19,12 +19,18 @@
 			<input type="text" id="txt_date" value="2013/01/22"/>
 			<script>
 			var selectDate = new MobileSelectDate();
-			selectDate.init({trigger:'#txt_date'});
+			selectDate.init({trigger:'#txt_date',value:'2011/03/02',min:'1990/01/01',max:'2016/02/11'});
 			</script>
 		</body>
 	</html>
 #属性及方法
 ##trigger:
-		触发弹窗的DOM元素 ，可以是input或其他
+	触发弹窗的DOM元素 ，可以是input或其他
 #callback:
-		选中后的回调，默认有填充trigger的value值，以‘/’分隔
+	选中后的回调，默认有填充trigger的value值，以‘/’分隔
+##value`YYYY/MM/dd`
+	默认值
+##min:`string`
+	最小值,默认""1900/01/01""
+##max:`string`
+	最大值，默认当前时间
