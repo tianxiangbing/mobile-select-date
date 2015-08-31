@@ -3,11 +3,6 @@ dialog.css
 ----------------
 dialog.css
 
-mobile-select-area.css
-----------------
-dialog.css
-mobile-select-area.css
-
 mobile-select-date.css
 ----------------
 dialog.css

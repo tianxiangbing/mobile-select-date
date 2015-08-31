@@ -80,7 +80,7 @@
 		},
 		bindEvent: function() {
 			var _this = this;
-			this.trigger.click(function(e) {
+			this.trigger.tap(function(e) {
 				$.confirm('<div class="ui-scroller-mask"><div id="' + _this.id + '" class="ui-scroller"><div></div><div ></div><div></div><p></p></div></div>', null, function(t, c) {
 					if (t == "yes") {
 						_this.submit()
