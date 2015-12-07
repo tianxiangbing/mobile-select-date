@@ -96,6 +96,7 @@
 				target: html,
 				animate: true,
 				show: true,
+				fixed:true,
 				mask: true,
 				className: "ui-alert",
 				afterHide: function(c) {

@@ -39,6 +39,7 @@
 			this.settings.value = this.settings.value || $(this.settings.trigger).val() || now.getFullYear() + "/" + ("0" + (now.getMonth() + 1)).slice(-2) + '/' + ("0" + (now.getDate())).slice(-2);
 			this.settings.value = this.settings.value.replace(/\//g, ',');
 			this.settings.text = this.settings.value.split(',')
+			this.settings.default==undefined ? this.default=1:this.default = 0 ;//0为空,1时默认选中第一项
 			this.trigger = $(this.settings.trigger);
 			this.trigger.attr("readonly", "readonly");
 			this.value = (this.settings.value && this.settings.value.split(",")) || [0, 0, 0];
@@ -64,13 +65,11 @@
 					for (var d = 1; d <= days; d++) {
 						var j = {};
 						j['id'] = j['name'] = ("0" + d).slice(-2);
-						if(s=="2016" && m ==2)
-							console.log('1')
-						if(!(m == this.max.getMonth()+1&& s == this.max.getFullYear() && d>this.max.getDate())){
+						if (!(m == this.max.getMonth() + 1 && s == this.max.getFullYear() && d > this.max.getDate())) {
 							o.child.push(j);
 						}
 					}
-					if(!(m > this.max.getMonth()+1&& s == this.max.getFullYear())){
+					if (!(m > this.max.getMonth() + 1 && s == this.max.getFullYear())) {
 						obj.child.push(o);
 					}
 				}
@@ -80,7 +79,7 @@
 		},
 		bindEvent: function() {
 			var _this = this;
-			this.trigger.tap(function(e) {
+			this.trigger.click(function(e) {
 				$.confirm('<div class="ui-scroller-mask"><div id="' + _this.id + '" class="ui-scroller"><div></div><div ></div><div></div><p></p></div></div>', null, function(t, c) {
 					if (t == "yes") {
 						_this.submit()
@@ -97,10 +96,10 @@
 				var start = 0,
 					end = 0
 				_this.scroller.children().bind('touchstart', function(e) {
-					start = e.changedTouches[0].pageY;
+					start = (e.changedTouches || e.originalEvent.changedTouches)[0].pageY;
 				});
 				_this.scroller.children().bind('touchmove', function(e) {
-					end = e.changedTouches[0].pageY;
+					end = (e.changedTouches || e.originalEvent.changedTouches)[0].pageY;
 					var diff = end - start;
 					var dl = $(e.target).parent();
 					if (dl[0].nodeName != "DL") {
@@ -112,7 +111,7 @@
 					return false;
 				});
 				_this.scroller.children().bind('touchend', function(e) {
-					end = e.changedTouches[0].pageY;
+					end = (e.changedTouches || e.originalEvent.changedTouches)[0].pageY;
 					var diff = end - start;
 					var dl = $(e.target).parent();
 					if (dl[0].nodeName != "DL") {
@@ -162,7 +161,7 @@
 			var str = '<dl><dd ref="0">——</dd>';
 			var focus = 0,
 				childData, top = _this.mtop;
-			if (_this.index !== 0 && _this.value[_this.index - 1] == "0") {
+			if (_this.index !== 0 && _this.value[_this.index - 1] == "0" && this.default == 0) {
 				str = '<dl><dd ref="0" class="focus">——</dd>';
 				_this.value[_this.index] = 0;
 				_this.text[_this.index] = "";
@@ -172,7 +171,19 @@
 					str = '<dl><dd ref="0" class="focus">——</dd>';
 					focus = 0;
 				}
-				for (var j = 0, len = item.length; j < len; j++) {
+				if (item.length > 0 && this.default == 1) {
+					str = '<dl>';
+					var pid = item[0].pid || 0;
+					var id = item[0].id || 0;
+					focus = item[0].id;
+					childData = item[0].child;
+					if(!_this.value[this.index ]){
+						_this.value[this.index ] = id;
+						_this.text[this.index] = item[0].name;
+					}
+					str += '<dd pid="' + pid + '" class="' + cls + '" ref="' + id + '">' + item[0].name + '</dd>';
+				}
+				for (var j = _this.default, len = item.length; j < len; j++) {
 					var pid = item[j].pid || 0;
 					var id = item[j].id || 0;
 					var cls = '';
@@ -180,7 +191,7 @@
 						cls = "focus";
 						focus = id;
 						childData = item[j].child;
-						top = _this.mtop * (-j);
+						top = _this.mtop * (-(j - _this.default));
 					};
 					str += '<dd pid="' + pid + '" class="' + cls + '" ref="' + id + '">' + item[j].name + '</dd>';
 				}

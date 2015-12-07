@@ -1,5 +1,9 @@
 # mobile-select-date
 手机联动选择日期
+效果图如下：
+
+![mobile-select-date](example/mobile-select-date.jpg)
+
 例子见[DEMO](http://www.lovewebgames.com/jsmodule/mobile-select-date.html)  
 #用法
 	<!DOCTYPE>
@@ -14,7 +18,7 @@
 			<script type="text/javascript" src="../dist/mobile-select-date.js"></script>
 		</head>
 		<body>
-			<input type="text" id="txt_date" value="2013/01/22"/>
+			<input type="text" id="txt_date"/>
 			<script>
 			var selectDate = new MobileSelectDate();
 			selectDate.init({trigger:'#txt_date',value:'2011/03/02',min:'1990/01/01',max:'2016/02/11'});
@@ -22,6 +26,8 @@
 		</body>
 	</html>
 #属性及方法
+##default:`0||1`
+	0为空,true时默认选中第一项,默认1
 ##trigger:
 	触发弹窗的DOM元素 ，可以是input或其他
 #callback:
