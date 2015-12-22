@@ -26,6 +26,7 @@
 		this.index = 0;
 		this.value = [0, 0, 0];
 		this.oldvalue;
+		this.oldtext;
 		this.text = ['', '', ''];
 		this.level = 3;
 		this.mtop = 30;
@@ -45,6 +46,7 @@
 			this.value = (this.settings.value && this.settings.value.split(",")) || [0, 0, 0];
 			this.text = this.settings.text || this.trigger.val().split(' ') || ['', '', ''];
 			this.oldvalue = this.value.concat([]);
+			this.oldtext = this.text.concat([]);
 			this.min = new Date(this.settings.min || "1900/01/01");
 			this.settings.max ? this.max = new Date(this.settings.max) : this.max = new Date();
 			this.getData();
@@ -210,6 +212,7 @@
 		},
 		submit: function() {
 			this.oldvalue = this.value.concat([]);
+			this.oldtext = this.text.concat([]);
 			if (this.trigger[0].nodeType == 1) {
 				//input
 				this.trigger.val(this.text.join(this.separator));
@@ -220,6 +223,7 @@
 		},
 		cancel: function() {
 			this.value = this.oldvalue.concat([]);
+			this.text = this.oldtext.concat([]);
 		}
 	}
 	return MobileSelectDate;
