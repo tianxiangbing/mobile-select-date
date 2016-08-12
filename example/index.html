@@ -7,12 +7,17 @@
 	</head>
 	<body>
 		<input type="text" id="txt_date" value="2014/05/12"/>
+		<input type="text" id="txt_date2" value="2014/05/12"/>
 		<script type="text/javascript" src="../src/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="../src/dialog.js"></script>
 		<script type="text/javascript" src="../src/mobile-select-date.js"></script>
 		<script>
 		var selectDate = new MobileSelectDate();
-		selectDate.init({trigger:'#txt_date',min:'1990/01/01',max:'2016/02/11'});
+		selectDate.init({trigger:'#txt_date',min:'1990/01/01',max:'2016/02/11',position:"bottom"});
+		</script>
+		<script>
+		var selectDate2 = new MobileSelectDate();
+		selectDate2.init({trigger:'#txt_date2',min:'1990/01/01',max:'2016/02/11'});
 		</script>
 	</body>
 </html>

@@ -82,17 +82,35 @@
 		bindEvent: function() {
 			var _this = this;
 			this.trigger.click(function(e) {
-				$.confirm('<div class="ui-scroller-mask"><div id="' + _this.id + '" class="ui-scroller"><div></div><div ></div><div></div><p></p></div></div>', null, function(t, c) {
+
+				var settings,buttons;
+				if( _this.settings.position == "bottom"){
+					settings ={
+						position:"bottom",
+						width:"100%",
+						className:"ui-dialog-bottom",
+						animate:false
+					}
+					var buttons=[{
+							'no': '取消'
+						},{
+							'yes': '确定'
+						}];
+				}
+				
+				$.confirm('<div class="ui-scroller-mask"><div id="' + _this.id + '" class="ui-scroller"><div></div><div ></div><div></div><p></p></div></div>', buttons, function(t, c) {
 					if (t == "yes") {
 						_this.submit()
 					}
-					if (t = 'no') {
+					if (t == 'no') {
 						_this.cancel();
 					}
 					this.dispose();
-				}, {
-					fixed: true
-				});
+				}, $.extend({
+					width: 320,
+					height: 215
+				},settings));
+				
 				_this.scroller = $('#' + _this.id);
 				_this.format();
 				var start = 0,

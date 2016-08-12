@@ -10,8 +10,9 @@
     "url": "http://www.lovewebgames.com/jsmodule/mobile-select-date.html"
   },
   "devDependencies": {
-    "grunt-contrib-requirejs": "^0.4.4",
+    "grunt": "^1.0.1",
     "grunt-contrib-cssmin": "^0.12.2",
+    "grunt-contrib-requirejs": "^0.4.4",
     "grunt-contrib-uglify": "~0.4.0",
     "grunt-contrib-watch": "^0.6.1"
   }
