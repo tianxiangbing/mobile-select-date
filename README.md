@@ -5,7 +5,7 @@
 ![mobile-select-date](example/mobile-select-date.jpg)
 
 例子见[DEMO](http://www.lovewebgames.com/jsmodule/mobile-select-date.html)  
-#用法
+# 用法
 	<!DOCTYPE>
 	<html>
 		<head>
@@ -25,18 +25,18 @@
 			</script>
 		</body>
 	</html>
-#属性及方法
-##position:'bottom'
+# 属性及方法
+## position:'bottom'
 	当这个值为bottom时，弹层固定显示在底部，不传时居中显示,默认居中.
-##default:`0||1`
+## default:`0||1`
 	0为空,true时默认选中第一项,默认1
-##trigger:
+## trigger:
 	触发弹窗的DOM元素 ，可以是input或其他
-#callback:
+# callback:
 	选中后的回调，默认有填充trigger的value值，以‘/’分隔
-##value`YYYY/MM/dd`
+## value`YYYY/MM/dd`
 	默认值
-##min:`string`
+## min:`string`
 	最小值,默认""1900/01/01""
-##max:`string`
+## max:`string`
 	最大值，默认当前时间
